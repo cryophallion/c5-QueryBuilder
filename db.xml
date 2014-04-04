@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+        <table name="ClientEvent"><!-- Event -->
+                <field name="eID" type="I"><key /><unsigned /><autoincrement/></field>
+                <field name="EventName" type="C" size="100"><NOTNULL/></field>
+                <field name="lID" type="I"><unsigned /></field><!-- Location ID -->
+                <field name="cUID" type="I"><unsigned /></field><!-- Chair User ID -->
+                <field name="oUID" type="I"><unsigned /></field><!-- Organizer User ID -->
+                <field name="EventDate" type="T"></field>
+                <field name="EventEndDate" type="T"></field>
+                <field name="PublishDate" type="D"></field>
+        </table>
+        <table name="ClientEventLocation">
+                <field name="lID" type="I"><key /><unsigned /><autoincrement/></field>
+                <field name="LocationName" type="C" size="50"><NOTNULL /></field>
+                <field name="LocationAddress1" type="C" size="100"></field>
+                <field name="LocationAddress2" type="C" size="100"></field>
+                <field name="LocationCity" type="C" size="50"></field>
+                <field name="LocationState" type="C" size="10"></field>
+                <field name="LocationZip" type="C" size="15"></field>
+                <field name="LocationURL" type="C" size="150"></field>
+                <field name="LocationMapURL" type="X2"></field>
+                <field name="LocationfID" type="I"><unsigned /></field>
+        </table>
+        <table name="ClientEventCategory"><!-- Event Settings -->
+                <field name="ecID" type="I"><key /><unsigned /><autoincrement/></field>
+                <field name="CategoryName" type="C" size="100"><NOTNULL/></field>
+                <field name="CategoryShortName" type="C" size="15"><NOTNULL/></field>
+                <field name="CategoryDescription" type="X2"></field>
+                <field name="sort_order" type="I"><UNSIGNED/><NOTNULL/></field>
+        </table>
+        <table name="ClientEventCategories"><!-- Join Table of Event Specific Categories -->
+                <field name="eccID" type="I"><key /><unsigned /><autoincrement/></field>
+                <field name="ecID" type="I"><unsigned /></field><!-- Event Category ID -->
+                <field name="eID" type="I"><unsigned /></field><!-- Event ID -->
+                <field name="gID" type="I"><unsigned /></field><!-- Group ID -->
+     
+        </table>
+        <table name="ClientEventImage"><!-- Event Image Table (specific images, fID may be duplicated in other events/categories) -->
+                <field name="eiID" type="I"><key /><unsigned /><autoincrement/></field>
+                <field name="fID" type="I"><unsigned /></field><!-- File ID (Image) -->
+                <field name="eccID" type="I"><unsigned /></field><!-- Event Competition Category ID -->
+                <field name="Points" type="I"><unsigned /></field><!-- Judge Vote -->
+                <field name="exif" type="X2"></field>
+                <field name="sort_order" type="I"><unsigned /></field>
+        </table>
+        <table name="ClientCompetitionAwards"><!-- Image Awards -->
+                <field name="aID" type="I"><key /><unsigned /><autoincrement/></field>
+                <field name="AwardName" type="C" size="50"><NOTNULL/></field>
+                <field name="AwardImageID" type="I"><unsigned /></field>
+                <field name="AwardOrder" type="I"></field>
+        </table>
+        <table name="ClientImageAwards"><!-- Image Awards Join Table -->
+            <field name="iaID" type="I"><key /><unsigned /><autoincrement /></field>
+            <field name="eiID" type="I"><unsigned /></field>
+            <field name="aID" type="I"><unsigned /></field>
+        </table>
+        <table name="ClientEventRatings"><!-- Event Ratings -->
+            <field name="uID" type="I"><unsigned /></field>
+            <field name="eID" type="I"><unsigned /></field>
+            <field name="rating" type="I"><unsigned /></field>
+        </table>
+</schema>
