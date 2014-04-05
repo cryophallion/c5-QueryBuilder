@@ -146,7 +146,7 @@ class QueryBuilderModel {
 	 * Creates Joins to get an attribute as part of the query
 	 * @param string $attribute_key_handle C5 handle for attribute key
 	 * @param string $field_as field used for unique field name
-	 * @param string $join_as uniqye handle for join table
+	 * @param string $join_as unique handle for join table
 	 * @param string $attribute_type_handle C5 handle for attribute type
 	 * @param string $attribute_category C5 attribute category (User,File,Collection)
 	 * @param string $attribute_category_table used to set the shortened category table name
