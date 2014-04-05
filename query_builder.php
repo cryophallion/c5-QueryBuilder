@@ -187,8 +187,8 @@ class QueryBuilderModel {
 		}
 
 		$this->fields[] = $join_as . '.value AS ' . $field_as;
-		$this->joins[] = 'LEFT JOIN ' . $attribute_category . 'AttributeValues AS ak' . $this->current . ' ON ak' . $this->current . '.avID=(SELECT MAX(avID) from ' . $attribute_category . 'AttributeValues av' . $this->current . ' where av' . $this->current . '.' . $attribute_field_comparison . '=' . $attribute_category_table . '.' . $attribute_field_name . ' and av' . $this->current . '.akID=(Select akID from AttributeKeys WHERE akHandle="' . $attribute_key_handle . '"))';
-		$this->joins[] = 'LEFT JOIN ' . $avTable . ' ' . $join_as . ' on ' . $join_as . '.avID=ak' . $this->current . '.avID';
+		$this->joins[] = "LEFT JOIN {$attribute_category}AttributeValues AS ak{$this->current} ON ak{$this->current}.avID=(SELECT MAX(avID) from {$attribute_category}AttributeValues av{$this->current} where av{$this->current}.{$attribute_field_comparison}={$attribute_category_table}.{$attribute_field_name} and av{$this->current}.akID=(Select akID from AttributeKeys WHERE akHandle='{$attribute_key_handle}'))";
+		$this->joins[] = "LEFT JOIN {$avTable} {$join_as} on {$join_as}.avID=ak{$this->current}.avID";
 		$this->current++;
 	}
 
