@@ -2,7 +2,7 @@
 
 defined('C5_EXECUTE') or die(_("Access Denied."));
 
-Loader::library('query_builder'); //change to your package location
+Loader::model('query_builder','query_builder'); //change to your package location
 
 class UserListModel extends BasicQueryModel {
 	
